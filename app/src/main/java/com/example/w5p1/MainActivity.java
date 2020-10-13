@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.add_country_id: {
                 Intent myIntent = new Intent(this, AddToDoTaskActivity.class);
                 startActivityForResult(myIntent,LAUNCH_SECOND_ACTIVITY);
+
             }
         }
         return true;
@@ -67,9 +68,12 @@ public class MainActivity extends AppCompatActivity {
                 ToDoTask result=data.getParcelableExtra("result");
                 Log.d("task","value");
                 toDoTasks.add(result);
-                customAdapter = new CustomAdapter(getApplicationContext(), toDoTasks);
-                simpleList.setAdapter(customAdapter);
-                //customAdapter.notifyDataSetChanged();
+
+               // customAdapter = new CustomAdapter(getApplicationContext(), toDoTasks);
+                //simpleList.setAdapter(customAdapter);
+
+               customAdapter.toDoTasks = toDoTasks;
+                customAdapter.notifyDataSetChanged();
 
             }
             if (resultCode == Activity.RESULT_CANCELED) {

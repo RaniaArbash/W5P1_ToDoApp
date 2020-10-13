@@ -19,7 +19,7 @@ public class CustomAdapter extends BaseAdapter {
     ArrayList<ToDoTask> toDoTasks;
 
     public CustomAdapter(Context applicationContext, ArrayList<ToDoTask> toDoTasks) {
-        this.context = context;
+        this.context = applicationContext;
         this.toDoTasks = new ArrayList<>(toDoTasks);
         inflter = (LayoutInflater.from(applicationContext));
     }
@@ -44,6 +44,7 @@ public class CustomAdapter extends BaseAdapter {
         view = inflter.inflate(R.layout.activity_listview, null);
         TextView task = (TextView) view.findViewById(R.id.task);
         TextView task_date = (TextView) view.findViewById(R.id.task_date);
+
         task.setText(toDoTasks.get(i).task);
         task_date.setText(toDoTasks.get(i).time);
 
